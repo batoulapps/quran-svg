@@ -7,30 +7,25 @@ def removeNodeWithName(nodeName, xml):
         parent = node.parentNode
         parent.removeChild(node)
 
-files = list()
+def adjustRootTransform(node, filename):
+    page_number = int(filename.replace('.svg', ''))
+    horizontal_offset = '-115' if page_number % 2 == 0 else '-55'
+    node.setAttribute('transform', f'matrix(1.3333333,0,0,-1.3333333,{horizontal_offset},640)')
 
-svg_dir = path.join(path.dirname(path.realpath(__file__)), "svg")
-output_dir = path.join(path.dirname(path.realpath(__file__)), "output")
+def setViewBox(node):
+    node.setAttribute('width', '345')
+    node.setAttribute('height', '550')
+    node.setAttribute('viewBox', '0 0 345 550')
 
-for (dirpath, dirnames, filenames) in walk(svg_dir):
-    files.extend(filenames)
+def optimizeOpeningPage(xml, filename):
+    # todo custom logic for first two pages
+    print(' ')
 
-for filename in sorted(files):
-    print(f'Opening {filename}')
-    filepath = path.join(svg_dir, filename)
-    xml = minidom.parse(filepath)
-
-    removeNodeWithName('metadata', xml)
-    removeNodeWithName('defs', xml)
-    
-    svg_root = xml.firstChild
-    svg_root.setAttribute('width', '345')
-    svg_root.setAttribute('height', '550')
-    svg_root.setAttribute('viewBox', '0 0 345 550')
+def optimizeStandardPage(xml, filename):
+    setViewBox(xml.firstChild)
     
     main_node = xml.firstChild.firstChild
-    # todo set horizontal transform based on even or odd page number
-    main_node.setAttribute('transform', 'matrix(1.3333333,0,0,-1.3333333,0,640)')
+    adjustRootTransform(main_node, filename)
 
     top_groups = main_node.childNodes
 
@@ -49,11 +44,37 @@ for filename in sorted(files):
 
     content_group.parentNode.removeChild(content_group)
 
-    output = xml.toxml()
-    xml.unlink()
+def main():
+    files = list()
 
-    output_path = path.join(output_dir, filename)
-    file_handler = open(output_path,'w')
-    file_handler.write(output)
-    file_handler.close()
-    print(f'Processed {filename}')
+    svg_dir = path.join(path.dirname(path.realpath(__file__)), "svg")
+    output_dir = path.join(path.dirname(path.realpath(__file__)), "output")
+
+    for (dirpath, dirnames, filenames) in walk(svg_dir):
+        files.extend(filenames)
+
+    for filename in sorted(files):
+        print(f'Opening {filename}')
+        filepath = path.join(svg_dir, filename)
+        xml = minidom.parse(filepath)
+
+        removeNodeWithName('metadata', xml)
+        removeNodeWithName('defs', xml)
+        
+        if filename in ['001.svg', '002.svg']:
+            optimizeOpeningPage(xml, filename)
+        else:
+            optimizeStandardPage(xml, filename)
+
+        output = xml.toxml()
+        xml.unlink()
+
+        output_path = path.join(output_dir, filename)
+        file_handler = open(output_path,'w')
+        file_handler.write(output)
+        file_handler.close()
+        print(f'Processed {filename}')
+
+
+if __name__ == "__main__":
+    main()
