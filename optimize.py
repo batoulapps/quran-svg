@@ -12,17 +12,36 @@ def adjustRootTransform(node, filename):
     horizontal_offset = '-115' if page_number % 2 == 0 else '-55'
     node.setAttribute('transform', f'matrix(1.3333333,0,0,-1.3333333,{horizontal_offset},640)')
 
-def setViewBox(node):
-    node.setAttribute('width', '345')
-    node.setAttribute('height', '550')
-    node.setAttribute('viewBox', '0 0 345 550')
+def setViewBox(node, width, height):
+    node.setAttribute('width', f'{width}')
+    node.setAttribute('height', f'{height}')
+    node.setAttribute('viewBox', f'0 0 {width} {height}')
 
 def optimizeOpeningPage(xml, filename):
-    # todo custom logic for first two pages
-    print(' ')
+    setViewBox(xml.firstChild, 235, 235)
+    
+    main_node = xml.firstChild.firstChild
+    main_node.setAttribute('transform', f'matrix(1.3333333,0,0,-1.3333333,-136,482)')
+    
+    top_groups = main_node.childNodes
+
+    content_group = top_groups[len(top_groups) - 1]
+    ayah_markers = top_groups[len(top_groups) - 2] # todo parse ayah markers to record ayah end positions
+    to_remove = top_groups[0:len(top_groups) - 1]
+
+    for node in to_remove:
+        parent = node.parentNode
+        parent.removeChild(node)
+    
+    group_nodes = content_group.getElementsByTagName('g')
+    translated_group = [x for x in group_nodes if x.hasAttribute('transform')][-1]
+    node = translated_group.parentNode.removeChild(translated_group)
+    main_node.appendChild(node)
+
+    content_group.parentNode.removeChild(content_group)
 
 def optimizeStandardPage(xml, filename):
-    setViewBox(xml.firstChild)
+    setViewBox(xml.firstChild, 345, 550)
     
     main_node = xml.firstChild.firstChild
     adjustRootTransform(main_node, filename)
