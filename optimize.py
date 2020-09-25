@@ -22,8 +22,15 @@ for filename in sorted(files):
 
     removeNodeWithName('metadata', xml)
     removeNodeWithName('defs', xml)
-
+    
+    svg_root = xml.firstChild
+    svg_root.setAttribute('width', '345')
+    svg_root.setAttribute('height', '550')
+    svg_root.setAttribute('viewBox', '0 0 345 550')
+    
     main_node = xml.firstChild.firstChild
+    # todo set horizontal transform based on even or odd page number
+    main_node.setAttribute('transform', 'matrix(1.3333333,0,0,-1.3333333,0,640)')
 
     top_groups = main_node.childNodes
 
