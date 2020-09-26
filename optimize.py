@@ -1,6 +1,15 @@
 from xml.dom import minidom
 from os import walk, path
 
+def isContentNode(node):
+    if node.firstChild == None:
+        return False
+    if node.firstChild.tagName != 'path':
+        return False
+    if node.firstChild.hasAttribute('style') and 'fill:#ffffff' in node.firstChild.getAttribute('style'):
+        return False
+    return True
+
 def removeNodeWithName(nodeName, xml):
     nodes = xml.getElementsByTagName(nodeName)
     for node in nodes:
@@ -57,9 +66,11 @@ def optimizeStandardPage(xml, filename):
         parent.removeChild(node)
     
     group_nodes = content_group.getElementsByTagName('g')
-    translated_group = [x for x in group_nodes if x.hasAttribute('transform')][0]
-    node = translated_group.parentNode.removeChild(translated_group)
-    main_node.appendChild(node)
+    translated_groups = [x for x in group_nodes if isContentNode(x)]
+    
+    for translated_group in translated_groups:
+        node = translated_group.parentNode.removeChild(translated_group)
+        main_node.appendChild(node)
 
     content_group.parentNode.removeChild(content_group)
 
