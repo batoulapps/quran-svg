@@ -3,6 +3,8 @@ from optparse import Values
 from xml.dom import minidom, NotFoundErr
 from os import walk, path
 from scour import scour
+from svgelements import Path
+from decimal import Decimal
 
 
 def is_content_node(node):
@@ -10,12 +12,14 @@ def is_content_node(node):
         return False
     if node.firstChild.tagName != "path":
         return False
-    if node.firstChild.hasAttribute(
-        "style"
-    ) and "fill:#ffffff" in node.firstChild.getAttribute("style"):
+    if (node.firstChild.hasAttribute("style") and
+            "fill:#ffffff" in node.firstChild.getAttribute("style")):
         return False
     return True
 
+def is_path(node):
+    return (node.tagName == "path" and
+            node.hasAttribute("d"))
 
 def remove_tags(tag_names, doc):
     for tag_name in tag_names:
@@ -168,6 +172,13 @@ def ayah_sort_key(ayah_node):
 
 
 def get_offset(node, x=0, y=0):
+    if node.firstChild is not None and is_path(node.firstChild):
+        path_definition = node.firstChild.getAttribute("d")
+        bounding_box = Path(path_definition).bbox()
+        # use path's bounding box to get the center of the ayah marker
+        x += Decimal(bounding_box[0] + ((bounding_box[2] - bounding_box[0]) / 2))
+        y += Decimal(bounding_box[1] + ((bounding_box[3] - bounding_box[1]) / 2))
+
     try:
         transform = scour.svg_transform_parser.parse(node.getAttribute("transform"))
         while len(transform) > 0:
