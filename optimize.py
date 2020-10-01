@@ -130,8 +130,6 @@ def set_node_ids(doc):
 
 
 def set_ayah_numbers(doc, ayah_offset):
-    root_group = doc.firstChild.firstChild
-    root_children = root_group.childNodes
     ayah_marker_group = doc.getElementById("ayah_markers")
 
     ayah_markers = ayah_marker_group.childNodes
@@ -143,20 +141,9 @@ def set_ayah_numbers(doc, ayah_offset):
         # print ayah offset
         x, y = get_offset(node)
 
-        e = doc.createElement("circle")
-        e.setAttribute("cx", str(x))
-        e.setAttribute("cy", str(y))
-        e.setAttribute("r", "2")
-        e.setAttribute("fill", "red")
-
-        t = doc.createElement("text")
-        t.setAttribute("x", str(x))
-        t.setAttribute("y", str(y))
-        t.setAttribute("fill", "red")
-        t.appendChild(doc.createTextNode(str(ayah_offset)))
-
-        doc.firstChild.appendChild(e)
-        doc.firstChild.appendChild(t)
+        node.setAttribute("ayah:index", str(ayah_offset))
+        node.setAttribute("ayah:x", str(round(x, 4)))
+        node.setAttribute("ayah:y", str(round(y, 4)))
 
         ayah_offset += 1
 
@@ -265,6 +252,8 @@ def main():
         else:
             optimize_standard_page(doc, filename)
 
+        doc.firstChild.setAttribute("xmlns:ayah", "https://quranapp.com")
+
         # remove all clip-path attributes
         all_nodes = doc.getElementsByTagName("*")
         for node in all_nodes:
@@ -274,6 +263,8 @@ def main():
                 pass
 
         doc = scour_xml(doc)
+
+        doc.firstChild.setAttribute("xmlns:ayah", "https://quranapp.com/svg")
 
         ayah_offset = set_ayah_numbers(doc, ayah_offset)
 

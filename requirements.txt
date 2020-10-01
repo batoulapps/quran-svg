@@ -1,0 +1,2 @@
+scour==0.38.1.post1
+svgelements==1.2.0
