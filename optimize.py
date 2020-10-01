@@ -17,9 +17,11 @@ def is_content_node(node):
         return False
     return True
 
+
 def is_path(node):
     return (node.tagName == "path" and
             node.hasAttribute("d"))
+
 
 def remove_tags(tag_names, doc):
     for tag_name in tag_names:
@@ -248,7 +250,8 @@ def main():
     output_dir = path.join(path.dirname(path.realpath(__file__)), "output")
 
     for (dirpath, dirnames, filenames) in walk(svg_dir):
-        files.extend(filenames)
+        svg_files = [file for file in filenames if file[-4:] == ".svg"]
+        files.extend(svg_files)
 
     ayah_offset = 1
 
