@@ -1,4 +1,6 @@
+import json
 from math import ceil
+from multiprocessing import Pool
 from optparse import Values
 from xml.dom import minidom, NotFoundErr
 from os import walk, path
@@ -6,21 +8,24 @@ from scour import scour
 from svgelements import Path
 from decimal import Decimal
 
+svg_dir = path.join(path.dirname(path.realpath(__file__)), "svg")
+output_dir = path.join(path.dirname(path.realpath(__file__)), "output")
+
 
 def is_content_node(node):
     if node.firstChild is None:
         return False
     if node.firstChild.tagName != "path":
         return False
-    if (node.firstChild.hasAttribute("style") and
-            "fill:#ffffff" in node.firstChild.getAttribute("style")):
+    if node.firstChild.hasAttribute(
+        "style"
+    ) and "fill:#ffffff" in node.firstChild.getAttribute("style"):
         return False
     return True
 
 
 def is_path(node):
-    return (node.tagName == "path" and
-            node.hasAttribute("d"))
+    return node.tagName == "path" and node.hasAttribute("d")
 
 
 def remove_tags(tag_names, doc):
@@ -95,59 +100,18 @@ def optimize_standard_page(doc, filename):
     remove_nodes(decorative_nodes)
 
 
-def optimize_unnecessary_nodes(doc):
-    # collapse clip-path groups
-    nodes = [x for x in doc.getElementsByTagName("g") if x.hasAttribute("clip-path")]
-    for node in nodes:
-        parent = node.parentNode
-        for child in node.childNodes:
-            move_node(child, parent)
-    remove_nodes(nodes)
-
-    # remove empty nodes
-    nodes = [x for x in doc.getElementsByTagName("g") if len(x.childNodes) == 0]
-    remove_nodes(nodes)
-
-    root_group = doc.firstChild.firstChild
-    root_children = root_group.childNodes
-    ayah_marker_group = root_children[0]
-
-    for node in [x for x in ayah_marker_group.childNodes if len(x.childNodes) > 0]:
-        move_node(node.firstChild.firstChild, ayah_marker_group)
-        remove_nodes([node])
-
-
-def set_node_ids(doc):
-    root_group = doc.firstChild.firstChild
-    root_group.setAttribute("id", "root")
-    root_children = root_group.childNodes
-
-    ayah_marker_group = root_children[0]
-    ayah_marker_group.setAttribute("id", "ayah_markers")
-
-    content_group = root_children[1]
-    content_group.setAttribute("id", "content")
-
-
-def set_ayah_numbers(doc, ayah_offset):
+def set_ayah_numbers(doc):
     ayah_marker_group = doc.getElementById("ayah_markers")
 
     ayah_markers = ayah_marker_group.childNodes
     ayah_marker_group.childNodes = sorted(ayah_markers, key=ayah_sort_key)
 
     for node in ayah_marker_group.childNodes:
-        node.setAttribute("id", f"ayah{ayah_offset}")
-
         # print ayah offset
         x, y = get_offset(node)
 
-        node.setAttribute("ayah:index", str(ayah_offset))
         node.setAttribute("ayah:x", str(round(x, 4)))
         node.setAttribute("ayah:y", str(round(y, 4)))
-
-        ayah_offset += 1
-
-    return ayah_offset
 
 
 def ayah_sort_key(ayah_node):
@@ -182,9 +146,6 @@ def get_offset(node, x=0, y=0):
         pass
     except AttributeError:
         pass
-    except ValueError as e:
-        print(transform)
-        raise e
 
     if node.parentNode is not None:
         return get_offset(node.parentNode, x, y)
@@ -230,50 +191,49 @@ def scour_xml(doc):
     return doc
 
 
+def process_file(filename):
+    print(f"Opening {filename}")
+
+    filepath = path.join(svg_dir, filename)
+    doc = minidom.parse(filepath)
+
+    if filename in ["001.svg", "002.svg"]:
+        optimize_opening_page(doc, filename)
+    else:
+        optimize_standard_page(doc, filename)
+
+    doc.firstChild.setAttribute("xmlns:ayah", "https://quranapp.com")
+
+    # remove all clip-path attributes
+    all_nodes = doc.getElementsByTagName("*")
+    for node in all_nodes:
+        try:
+            node.removeAttribute("clip-path")
+        except NotFoundErr:
+            pass
+
+    doc = scour_xml(doc)
+    doc.firstChild.setAttribute("xmlns:ayah", "https://quranapp.com/svg")
+
+    set_ayah_numbers(doc)
+
+    out_string = doc.toxml()
+    doc.unlink()
+
+    with open(path.join(output_dir, filename), "w") as file:
+        file.write(out_string)
+        print(f"Processed {filename}")
+
+
 def main():
     files = list()
-
-    svg_dir = path.join(path.dirname(path.realpath(__file__)), "svg")
-    output_dir = path.join(path.dirname(path.realpath(__file__)), "output")
 
     for (dirpath, dirnames, filenames) in walk(svg_dir):
         svg_files = [file for file in filenames if file[-4:] == ".svg"]
         files.extend(svg_files)
 
-    ayah_offset = 1
-
-    for filename in sorted(files):
-        print(f"Opening {filename}")
-        filepath = path.join(svg_dir, filename)
-        doc = minidom.parse(filepath)
-
-        if filename in ["001.svg", "002.svg"]:
-            optimize_opening_page(doc, filename)
-        else:
-            optimize_standard_page(doc, filename)
-
-        doc.firstChild.setAttribute("xmlns:ayah", "https://quranapp.com")
-
-        # remove all clip-path attributes
-        all_nodes = doc.getElementsByTagName("*")
-        for node in all_nodes:
-            try:
-                node.removeAttribute("clip-path")
-            except NotFoundErr:
-                pass
-
-        doc = scour_xml(doc)
-
-        doc.firstChild.setAttribute("xmlns:ayah", "https://quranapp.com/svg")
-
-        ayah_offset = set_ayah_numbers(doc, ayah_offset)
-
-        out_string = doc.toprettyxml()
-        doc.unlink()
-
-        with open(path.join(output_dir, filename), "w") as file:
-            file.write(out_string)
-            print(f"Processed {filename}")
+    with Pool() as p:
+        p.map(process_file, files)
 
 
 if __name__ == "__main__":

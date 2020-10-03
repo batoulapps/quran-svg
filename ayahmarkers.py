@@ -17,7 +17,7 @@ def main():
         filepath = path.join(output_dir, filename)
         doc = minidom.parse(filepath)
 
-        page_number = path.splitext(filename)[0]
+        page_number = int(path.splitext(filename)[0])
 
         # make getElementById work
         all_nodes = doc.getElementsByTagName("*")
@@ -27,23 +27,25 @@ def main():
             except NotFoundErr:
                 pass
 
+        ayah_number = 0
+
         # find ayah markers
         nodes = doc.getElementById("ayah_markers").childNodes
         for node in [x for x in nodes if x.nodeType == Node.ELEMENT_NODE]:
-            ayah_number = node.getAttribute("ayah:index")
+            ayah_number += 1
             x = node.getAttribute("ayah:x")
             y = node.getAttribute("ayah:y")
             items.append(
                 {
-                    "page": int(page_number),
-                    "ayah": int(ayah_number),
+                    "page": page_number,
+                    "ayah": ayah_number,
                     "x": float(x),
                     "y": float(y),
                 }
             )
 
     with open(path.join(output_dir, "markers.json"), "w") as file:
-        file.write(json.dumps(items, indent=4))
+        file.write(json.dumps(items))
 
 
 if __name__ == "__main__":
