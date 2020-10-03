@@ -11,7 +11,11 @@ def main():
     for (_, _, filenames) in walk(output_dir):
         files.extend([x for x in filenames if x.endswith("svg")])
 
-    items = []
+    with open("surah.json") as fp:
+        surahs = json.load(fp)
+
+    surah_index = 0
+    ayah_number = 0
 
     for filename in sorted(files):
         filepath = path.join(output_dir, filename)
@@ -27,7 +31,7 @@ def main():
             except NotFoundErr:
                 pass
 
-        ayah_number = 0
+        items = []
 
         # find ayah markers
         nodes = doc.getElementById("ayah_markers").childNodes
@@ -37,15 +41,19 @@ def main():
             y = node.getAttribute("ayah:y")
             items.append(
                 {
-                    "page": page_number,
-                    "ayah": ayah_number,
+                    "surahNumber": surahs[surah_index]["number"],
+                    "ayahNumber": ayah_number,
                     "x": float(x),
                     "y": float(y),
                 }
             )
 
-    with open(path.join(output_dir, "markers.json"), "w") as file:
-        file.write(json.dumps(items))
+            if ayah_number == surahs[surah_index]["ayahCount"]:
+                ayah_number = 0
+                surah_index += 1
+
+        with open(path.join(output_dir, f"{page_number:03}.json"), "w") as fp:
+            json.dump(items, fp, indent=4, sort_keys=True)
 
 
 if __name__ == "__main__":

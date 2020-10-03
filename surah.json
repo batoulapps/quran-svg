@@ -1,0 +1,1028 @@
+[
+  {
+    "ayahCount": 7,
+    "juzNumber": 1,
+    "nameArabic": "الفاتحة",
+    "nameEnglish": "Al-Fatiha",
+    "nameTransaction": "The Opener",
+    "number": 1,
+    "pageNumber": 1
+  },
+  {
+    "ayahCount": 286,
+    "juzNumber": 1,
+    "nameArabic": "البقرة",
+    "nameEnglish": "Al-Baqara",
+    "nameTransaction": "The Cow",
+    "number": 2,
+    "pageNumber": 2
+  },
+  {
+    "ayahCount": 200,
+    "juzNumber": 3,
+    "nameArabic": "آل عمران",
+    "nameEnglish": "Aal 'Imran",
+    "nameTransaction": "Family of Imran",
+    "number": 3,
+    "pageNumber": 50
+  },
+  {
+    "ayahCount": 176,
+    "juzNumber": 4,
+    "nameArabic": "النساء",
+    "nameEnglish": "An-Nisa",
+    "nameTransaction": "The Women",
+    "number": 4,
+    "pageNumber": 77
+  },
+  {
+    "ayahCount": 120,
+    "juzNumber": 6,
+    "nameArabic": "المائدة",
+    "nameEnglish": "Al-Ma'ida",
+    "nameTransaction": "The Table",
+    "number": 5,
+    "pageNumber": 106
+  },
+  {
+    "ayahCount": 165,
+    "juzNumber": 7,
+    "nameArabic": "الأنعام",
+    "nameEnglish": "Al-An'am",
+    "nameTransaction": "The Cattle",
+    "number": 6,
+    "pageNumber": 128
+  },
+  {
+    "ayahCount": 206,
+    "juzNumber": 8,
+    "nameArabic": "الأعراف",
+    "nameEnglish": "Al-A'raf",
+    "nameTransaction": "The Heights",
+    "number": 7,
+    "pageNumber": 151
+  },
+  {
+    "ayahCount": 75,
+    "juzNumber": 9,
+    "nameArabic": "الأنفال",
+    "nameEnglish": "Al-Anfal",
+    "nameTransaction": "The Spoils of War",
+    "number": 8,
+    "pageNumber": 177
+  },
+  {
+    "ayahCount": 129,
+    "juzNumber": 10,
+    "nameArabic": "التوبة",
+    "nameEnglish": "At-Tawba",
+    "nameTransaction": "The Repentance",
+    "number": 9,
+    "pageNumber": 187
+  },
+  {
+    "ayahCount": 109,
+    "juzNumber": 11,
+    "nameArabic": "يونس",
+    "nameEnglish": "Yunus",
+    "nameTransaction": "Jonah",
+    "number": 10,
+    "pageNumber": 208
+  },
+  {
+    "ayahCount": 123,
+    "juzNumber": 11,
+    "nameArabic": "هود",
+    "nameEnglish": "Hud",
+    "nameTransaction": "Hud",
+    "number": 11,
+    "pageNumber": 221
+  },
+  {
+    "ayahCount": 111,
+    "juzNumber": 12,
+    "nameArabic": "يوسف",
+    "nameEnglish": "Yusuf",
+    "nameTransaction": "Joseph",
+    "number": 12,
+    "pageNumber": 235
+  },
+  {
+    "ayahCount": 43,
+    "juzNumber": 13,
+    "nameArabic": "الرعد",
+    "nameEnglish": "Ar-Ra'd",
+    "nameTransaction": "The Thunder",
+    "number": 13,
+    "pageNumber": 249
+  },
+  {
+    "ayahCount": 52,
+    "juzNumber": 13,
+    "nameArabic": "ابراهيم",
+    "nameEnglish": "Ibrahim",
+    "nameTransaction": "Abraham",
+    "number": 14,
+    "pageNumber": 255
+  },
+  {
+    "ayahCount": 99,
+    "juzNumber": 14,
+    "nameArabic": "الحجر",
+    "nameEnglish": "Al-Hijr",
+    "nameTransaction": "The Rock",
+    "number": 15,
+    "pageNumber": 262
+  },
+  {
+    "ayahCount": 128,
+    "juzNumber": 14,
+    "nameArabic": "النحل",
+    "nameEnglish": "An-Nahl",
+    "nameTransaction": "The Bee",
+    "number": 16,
+    "pageNumber": 267
+  },
+  {
+    "ayahCount": 111,
+    "juzNumber": 15,
+    "nameArabic": "الإسراء",
+    "nameEnglish": "Al-Israa",
+    "nameTransaction": "The Night Journey",
+    "number": 17,
+    "pageNumber": 282
+  },
+  {
+    "ayahCount": 110,
+    "juzNumber": 15,
+    "nameArabic": "الكهف",
+    "nameEnglish": "Al-Kahf",
+    "nameTransaction": "The Cave",
+    "number": 18,
+    "pageNumber": 293
+  },
+  {
+    "ayahCount": 98,
+    "juzNumber": 16,
+    "nameArabic": "مريم",
+    "nameEnglish": "Maryam",
+    "nameTransaction": "Mary",
+    "number": 19,
+    "pageNumber": 305
+  },
+  {
+    "ayahCount": 135,
+    "juzNumber": 16,
+    "nameArabic": "طه",
+    "nameEnglish": "Ta-Ha",
+    "nameTransaction": "Ta Ha",
+    "number": 20,
+    "pageNumber": 312
+  },
+  {
+    "ayahCount": 112,
+    "juzNumber": 17,
+    "nameArabic": "الأنبياء",
+    "nameEnglish": "Al-Anbiya",
+    "nameTransaction": "The Prophets",
+    "number": 21,
+    "pageNumber": 322
+  },
+  {
+    "ayahCount": 78,
+    "juzNumber": 17,
+    "nameArabic": "الحج",
+    "nameEnglish": "Al-Hajj",
+    "nameTransaction": "The Pilgrimage",
+    "number": 22,
+    "pageNumber": 332
+  },
+  {
+    "ayahCount": 118,
+    "juzNumber": 18,
+    "nameArabic": "المؤمنون",
+    "nameEnglish": "Al-Mu'minun",
+    "nameTransaction": "The Believers",
+    "number": 23,
+    "pageNumber": 342
+  },
+  {
+    "ayahCount": 64,
+    "juzNumber": 18,
+    "nameArabic": "النور",
+    "nameEnglish": "An-Nur",
+    "nameTransaction": "The Light",
+    "number": 24,
+    "pageNumber": 350
+  },
+  {
+    "ayahCount": 77,
+    "juzNumber": 18,
+    "nameArabic": "الفرقان",
+    "nameEnglish": "Al-Furqan",
+    "nameTransaction": "The Criterion",
+    "number": 25,
+    "pageNumber": 359
+  },
+  {
+    "ayahCount": 227,
+    "juzNumber": 19,
+    "nameArabic": "الشعراء",
+    "nameEnglish": "Ash-Shu'ara",
+    "nameTransaction": "The Poets",
+    "number": 26,
+    "pageNumber": 367
+  },
+  {
+    "ayahCount": 93,
+    "juzNumber": 19,
+    "nameArabic": "النمل",
+    "nameEnglish": "An-Naml",
+    "nameTransaction": "The Ant",
+    "number": 27,
+    "pageNumber": 377
+  },
+  {
+    "ayahCount": 88,
+    "juzNumber": 20,
+    "nameArabic": "القصص",
+    "nameEnglish": "Al-Qasas",
+    "nameTransaction": "The Stories",
+    "number": 28,
+    "pageNumber": 385
+  },
+  {
+    "ayahCount": 69,
+    "juzNumber": 20,
+    "nameArabic": "العنكبوت",
+    "nameEnglish": "Al-'Ankabut",
+    "nameTransaction": "The Spider",
+    "number": 29,
+    "pageNumber": 396
+  },
+  {
+    "ayahCount": 60,
+    "juzNumber": 21,
+    "nameArabic": "الروم",
+    "nameEnglish": "Ar-Rum",
+    "nameTransaction": "The Romans",
+    "number": 30,
+    "pageNumber": 404
+  },
+  {
+    "ayahCount": 34,
+    "juzNumber": 21,
+    "nameArabic": "لقمان",
+    "nameEnglish": "Luqman",
+    "nameTransaction": "Luqman",
+    "number": 31,
+    "pageNumber": 411
+  },
+  {
+    "ayahCount": 30,
+    "juzNumber": 21,
+    "nameArabic": "السجدة",
+    "nameEnglish": "As-Sajda",
+    "nameTransaction": "The Prostration",
+    "number": 32,
+    "pageNumber": 415
+  },
+  {
+    "ayahCount": 73,
+    "juzNumber": 21,
+    "nameArabic": "الأحزاب",
+    "nameEnglish": "Al-Ahzab",
+    "nameTransaction": "The Clans",
+    "number": 33,
+    "pageNumber": 418
+  },
+  {
+    "ayahCount": 54,
+    "juzNumber": 22,
+    "nameArabic": "سبإ",
+    "nameEnglish": "Saba",
+    "nameTransaction": "Sheba",
+    "number": 34,
+    "pageNumber": 428
+  },
+  {
+    "ayahCount": 45,
+    "juzNumber": 22,
+    "nameArabic": "فاطر",
+    "nameEnglish": "Fatir",
+    "nameTransaction": "The Originator",
+    "number": 35,
+    "pageNumber": 434
+  },
+  {
+    "ayahCount": 83,
+    "juzNumber": 22,
+    "nameArabic": "يس",
+    "nameEnglish": "Ya-Sin",
+    "nameTransaction": "Ya Sin",
+    "number": 36,
+    "pageNumber": 440
+  },
+  {
+    "ayahCount": 182,
+    "juzNumber": 23,
+    "nameArabic": "الصافات",
+    "nameEnglish": "As-Saffat",
+    "nameTransaction": "Those drawn up in Ranks",
+    "number": 37,
+    "pageNumber": 446
+  },
+  {
+    "ayahCount": 88,
+    "juzNumber": 23,
+    "nameArabic": "ص",
+    "nameEnglish": "Saad",
+    "nameTransaction": "The letter Saad",
+    "number": 38,
+    "pageNumber": 453
+  },
+  {
+    "ayahCount": 75,
+    "juzNumber": 23,
+    "nameArabic": "الزمر",
+    "nameEnglish": "Az-Zumar",
+    "nameTransaction": "The Groups",
+    "number": 39,
+    "pageNumber": 458
+  },
+  {
+    "ayahCount": 85,
+    "juzNumber": 24,
+    "nameArabic": "غافر",
+    "nameEnglish": "Al-Ghafir",
+    "nameTransaction": "The Forgiver",
+    "number": 40,
+    "pageNumber": 467
+  },
+  {
+    "ayahCount": 54,
+    "juzNumber": 24,
+    "nameArabic": "فصلت",
+    "nameEnglish": "Fussilat",
+    "nameTransaction": "Explained in Detail",
+    "number": 41,
+    "pageNumber": 477
+  },
+  {
+    "ayahCount": 53,
+    "juzNumber": 25,
+    "nameArabic": "الشورى",
+    "nameEnglish": "Ash-Shura",
+    "nameTransaction": "Consultation",
+    "number": 42,
+    "pageNumber": 483
+  },
+  {
+    "ayahCount": 89,
+    "juzNumber": 25,
+    "nameArabic": "الزخرف",
+    "nameEnglish": "Az-Zukhruf",
+    "nameTransaction": "Ornaments of gold",
+    "number": 43,
+    "pageNumber": 489
+  },
+  {
+    "ayahCount": 59,
+    "juzNumber": 25,
+    "nameArabic": "الدخان",
+    "nameEnglish": "Ad-Dukhan",
+    "nameTransaction": "The Smoke",
+    "number": 44,
+    "pageNumber": 496
+  },
+  {
+    "ayahCount": 37,
+    "juzNumber": 25,
+    "nameArabic": "الجاثية",
+    "nameEnglish": "Al-Jathiya",
+    "nameTransaction": "The Crouching",
+    "number": 45,
+    "pageNumber": 499
+  },
+  {
+    "ayahCount": 35,
+    "juzNumber": 26,
+    "nameArabic": "الأحقاف",
+    "nameEnglish": "Al-Ahqaf",
+    "nameTransaction": "The Dunes",
+    "number": 46,
+    "pageNumber": 502
+  },
+  {
+    "ayahCount": 38,
+    "juzNumber": 26,
+    "nameArabic": "محمد",
+    "nameEnglish": "Muhammad",
+    "nameTransaction": "Muhammad",
+    "number": 47,
+    "pageNumber": 507
+  },
+  {
+    "ayahCount": 29,
+    "juzNumber": 26,
+    "nameArabic": "الفتح",
+    "nameEnglish": "Al-Fath",
+    "nameTransaction": "The Victory",
+    "number": 48,
+    "pageNumber": 511
+  },
+  {
+    "ayahCount": 18,
+    "juzNumber": 26,
+    "nameArabic": "الحجرات",
+    "nameEnglish": "Al-Hujurat",
+    "nameTransaction": "The Rooms",
+    "number": 49,
+    "pageNumber": 515
+  },
+  {
+    "ayahCount": 45,
+    "juzNumber": 26,
+    "nameArabic": "ق",
+    "nameEnglish": "Qaf",
+    "nameTransaction": "The letter Qaaf",
+    "number": 50,
+    "pageNumber": 518
+  },
+  {
+    "ayahCount": 60,
+    "juzNumber": 26,
+    "nameArabic": "الذاريات",
+    "nameEnglish": "Adh-Dhariyat",
+    "nameTransaction": "The Winnowing Winds",
+    "number": 51,
+    "pageNumber": 520
+  },
+  {
+    "ayahCount": 49,
+    "juzNumber": 27,
+    "nameArabic": "الطور",
+    "nameEnglish": "At-Tur",
+    "nameTransaction": "The Mount",
+    "number": 52,
+    "pageNumber": 523
+  },
+  {
+    "ayahCount": 62,
+    "juzNumber": 27,
+    "nameArabic": "النجم",
+    "nameEnglish": "An-Najm",
+    "nameTransaction": "The Star",
+    "number": 53,
+    "pageNumber": 526
+  },
+  {
+    "ayahCount": 55,
+    "juzNumber": 27,
+    "nameArabic": "القمر",
+    "nameEnglish": "Al-Qamar",
+    "nameTransaction": "The Moon",
+    "number": 54,
+    "pageNumber": 528
+  },
+  {
+    "ayahCount": 78,
+    "juzNumber": 27,
+    "nameArabic": "الرحمن",
+    "nameEnglish": "Ar-Rahman",
+    "nameTransaction": "The Beneficent",
+    "number": 55,
+    "pageNumber": 531
+  },
+  {
+    "ayahCount": 96,
+    "juzNumber": 27,
+    "nameArabic": "الواقعة",
+    "nameEnglish": "Al-Waqi'a",
+    "nameTransaction": "The Inevitable",
+    "number": 56,
+    "pageNumber": 534
+  },
+  {
+    "ayahCount": 29,
+    "juzNumber": 27,
+    "nameArabic": "الحديد",
+    "nameEnglish": "Al-Hadid",
+    "nameTransaction": "The Iron",
+    "number": 57,
+    "pageNumber": 537
+  },
+  {
+    "ayahCount": 22,
+    "juzNumber": 28,
+    "nameArabic": "المجادلة",
+    "nameEnglish": "Al-Mujadila",
+    "nameTransaction": "The Pleading Woman",
+    "number": 58,
+    "pageNumber": 542
+  },
+  {
+    "ayahCount": 24,
+    "juzNumber": 28,
+    "nameArabic": "الحشر",
+    "nameEnglish": "Al-Hashr",
+    "nameTransaction": "The Exile",
+    "number": 59,
+    "pageNumber": 545
+  },
+  {
+    "ayahCount": 13,
+    "juzNumber": 28,
+    "nameArabic": "الممتحنة",
+    "nameEnglish": "Al-Mumtahana",
+    "nameTransaction": "She that is to be examined",
+    "number": 60,
+    "pageNumber": 549
+  },
+  {
+    "ayahCount": 14,
+    "juzNumber": 28,
+    "nameArabic": "الصف",
+    "nameEnglish": "As-Saf",
+    "nameTransaction": "The Ranks",
+    "number": 61,
+    "pageNumber": 551
+  },
+  {
+    "ayahCount": 11,
+    "juzNumber": 28,
+    "nameArabic": "الجمعة",
+    "nameEnglish": "Al-Jumu'a",
+    "nameTransaction": "Friday",
+    "number": 62,
+    "pageNumber": 553
+  },
+  {
+    "ayahCount": 11,
+    "juzNumber": 28,
+    "nameArabic": "المنافقون",
+    "nameEnglish": "Al-Munafiqun",
+    "nameTransaction": "The Hypocrites",
+    "number": 63,
+    "pageNumber": 554
+  },
+  {
+    "ayahCount": 18,
+    "juzNumber": 28,
+    "nameArabic": "التغابن",
+    "nameEnglish": "At-Taghabun",
+    "nameTransaction": "Mutual Disillusion",
+    "number": 64,
+    "pageNumber": 556
+  },
+  {
+    "ayahCount": 12,
+    "juzNumber": 28,
+    "nameArabic": "الطلاق",
+    "nameEnglish": "At-Talaq",
+    "nameTransaction": "Divorce",
+    "number": 65,
+    "pageNumber": 558
+  },
+  {
+    "ayahCount": 12,
+    "juzNumber": 28,
+    "nameArabic": "التحريم",
+    "nameEnglish": "At-Tahrim",
+    "nameTransaction": "The Prohibition",
+    "number": 66,
+    "pageNumber": 560
+  },
+  {
+    "ayahCount": 30,
+    "juzNumber": 29,
+    "nameArabic": "الملك",
+    "nameEnglish": "Al-Mulk",
+    "nameTransaction": "The Sovereignty",
+    "number": 67,
+    "pageNumber": 562
+  },
+  {
+    "ayahCount": 52,
+    "juzNumber": 29,
+    "nameArabic": "القلم",
+    "nameEnglish": "Al-Qalam",
+    "nameTransaction": "The Pen",
+    "number": 68,
+    "pageNumber": 564
+  },
+  {
+    "ayahCount": 52,
+    "juzNumber": 29,
+    "nameArabic": "الحاقة",
+    "nameEnglish": "Al-Haqqa",
+    "nameTransaction": "The Reality",
+    "number": 69,
+    "pageNumber": 566
+  },
+  {
+    "ayahCount": 44,
+    "juzNumber": 29,
+    "nameArabic": "المعارج",
+    "nameEnglish": "Al-Ma'arij",
+    "nameTransaction": "The Ascending Stairways",
+    "number": 70,
+    "pageNumber": 568
+  },
+  {
+    "ayahCount": 28,
+    "juzNumber": 29,
+    "nameArabic": "نوح",
+    "nameEnglish": "Nuh",
+    "nameTransaction": "Noah",
+    "number": 71,
+    "pageNumber": 570
+  },
+  {
+    "ayahCount": 28,
+    "juzNumber": 29,
+    "nameArabic": "الجن",
+    "nameEnglish": "Al-Jinn",
+    "nameTransaction": "The Jinn",
+    "number": 72,
+    "pageNumber": 572
+  },
+  {
+    "ayahCount": 20,
+    "juzNumber": 29,
+    "nameArabic": "المزمل",
+    "nameEnglish": "Al-Muzzammil",
+    "nameTransaction": "The Enshrouded One",
+    "number": 73,
+    "pageNumber": 574
+  },
+  {
+    "ayahCount": 56,
+    "juzNumber": 29,
+    "nameArabic": "المدثر",
+    "nameEnglish": "Al-Muddaththir",
+    "nameTransaction": "The Cloaked One",
+    "number": 74,
+    "pageNumber": 575
+  },
+  {
+    "ayahCount": 40,
+    "juzNumber": 29,
+    "nameArabic": "القيامة",
+    "nameEnglish": "Al-Qiyama",
+    "nameTransaction": "The Resurrection",
+    "number": 75,
+    "pageNumber": 577
+  },
+  {
+    "ayahCount": 31,
+    "juzNumber": 29,
+    "nameArabic": "الانسان",
+    "nameEnglish": "Al-Insan",
+    "nameTransaction": "Man",
+    "number": 76,
+    "pageNumber": 578
+  },
+  {
+    "ayahCount": 50,
+    "juzNumber": 29,
+    "nameArabic": "المرسلات",
+    "nameEnglish": "Al-Mursalat",
+    "nameTransaction": "The Emissaries",
+    "number": 77,
+    "pageNumber": 580
+  },
+  {
+    "ayahCount": 40,
+    "juzNumber": 30,
+    "nameArabic": "النبإ",
+    "nameEnglish": "An-Naba",
+    "nameTransaction": "The Announcement",
+    "number": 78,
+    "pageNumber": 582
+  },
+  {
+    "ayahCount": 46,
+    "juzNumber": 30,
+    "nameArabic": "النازعات",
+    "nameEnglish": "An-Nazi'at",
+    "nameTransaction": "Those who drag forth",
+    "number": 79,
+    "pageNumber": 583
+  },
+  {
+    "ayahCount": 42,
+    "juzNumber": 30,
+    "nameArabic": "عبس",
+    "nameEnglish": "Abasa",
+    "nameTransaction": "He frowned",
+    "number": 80,
+    "pageNumber": 585
+  },
+  {
+    "ayahCount": 29,
+    "juzNumber": 30,
+    "nameArabic": "التكوير",
+    "nameEnglish": "At-Takwir",
+    "nameTransaction": "The Overthrowing",
+    "number": 81,
+    "pageNumber": 586
+  },
+  {
+    "ayahCount": 19,
+    "juzNumber": 30,
+    "nameArabic": "الإنفطار",
+    "nameEnglish": "Al-Infitar",
+    "nameTransaction": "The Cleaving",
+    "number": 82,
+    "pageNumber": 587
+  },
+  {
+    "ayahCount": 36,
+    "juzNumber": 30,
+    "nameArabic": "المطففين",
+    "nameEnglish": "Al-Mutaffifin",
+    "nameTransaction": "Defrauding",
+    "number": 83,
+    "pageNumber": 587
+  },
+  {
+    "ayahCount": 25,
+    "juzNumber": 30,
+    "nameArabic": "الإنشقاق",
+    "nameEnglish": "Al-Inshiqaq",
+    "nameTransaction": "The Splitting Open",
+    "number": 84,
+    "pageNumber": 589
+  },
+  {
+    "ayahCount": 22,
+    "juzNumber": 30,
+    "nameArabic": "البروج",
+    "nameEnglish": "Al-Buruj",
+    "nameTransaction": "The Constellations",
+    "number": 85,
+    "pageNumber": 590
+  },
+  {
+    "ayahCount": 17,
+    "juzNumber": 30,
+    "nameArabic": "الطارق",
+    "nameEnglish": "At-Tariq",
+    "nameTransaction": "The Morning Star",
+    "number": 86,
+    "pageNumber": 591
+  },
+  {
+    "ayahCount": 19,
+    "juzNumber": 30,
+    "nameArabic": "الأعلى",
+    "nameEnglish": "Al-A'la",
+    "nameTransaction": "The Most High",
+    "number": 87,
+    "pageNumber": 591
+  },
+  {
+    "ayahCount": 26,
+    "juzNumber": 30,
+    "nameArabic": "الغاشية",
+    "nameEnglish": "Al-Ghashiya",
+    "nameTransaction": "The Overwhelming",
+    "number": 88,
+    "pageNumber": 592
+  },
+  {
+    "ayahCount": 30,
+    "juzNumber": 30,
+    "nameArabic": "الفجر",
+    "nameEnglish": "Al-Fajr",
+    "nameTransaction": "The Dawn",
+    "number": 89,
+    "pageNumber": 593
+  },
+  {
+    "ayahCount": 20,
+    "juzNumber": 30,
+    "nameArabic": "البلد",
+    "nameEnglish": "Al-Balad",
+    "nameTransaction": "The City",
+    "number": 90,
+    "pageNumber": 594
+  },
+  {
+    "ayahCount": 15,
+    "juzNumber": 30,
+    "nameArabic": "الشمس",
+    "nameEnglish": "Ash-Shams",
+    "nameTransaction": "The Sun",
+    "number": 91,
+    "pageNumber": 595
+  },
+  {
+    "ayahCount": 21,
+    "juzNumber": 30,
+    "nameArabic": "الليل",
+    "nameEnglish": "Al-Layl",
+    "nameTransaction": "The Night",
+    "number": 92,
+    "pageNumber": 595
+  },
+  {
+    "ayahCount": 11,
+    "juzNumber": 30,
+    "nameArabic": "الضحى",
+    "nameEnglish": "Ad-Dhuhaa",
+    "nameTransaction": "The Morning Hours",
+    "number": 93,
+    "pageNumber": 596
+  },
+  {
+    "ayahCount": 8,
+    "juzNumber": 30,
+    "nameArabic": "الشرح",
+    "nameEnglish": "Ash-Sharh",
+    "nameTransaction": "The Relief",
+    "number": 94,
+    "pageNumber": 596
+  },
+  {
+    "ayahCount": 8,
+    "juzNumber": 30,
+    "nameArabic": "التين",
+    "nameEnglish": "At-Tin",
+    "nameTransaction": "The Fig",
+    "number": 95,
+    "pageNumber": 597
+  },
+  {
+    "ayahCount": 19,
+    "juzNumber": 30,
+    "nameArabic": "العلق",
+    "nameEnglish": "Al-'Alaq",
+    "nameTransaction": "The Clot",
+    "number": 96,
+    "pageNumber": 597
+  },
+  {
+    "ayahCount": 5,
+    "juzNumber": 30,
+    "nameArabic": "القدر",
+    "nameEnglish": "Al-Qadr",
+    "nameTransaction": "The Power",
+    "number": 97,
+    "pageNumber": 598
+  },
+  {
+    "ayahCount": 8,
+    "juzNumber": 30,
+    "nameArabic": "البينة",
+    "nameEnglish": "Al-Bayyina",
+    "nameTransaction": "The Evidence",
+    "number": 98,
+    "pageNumber": 598
+  },
+  {
+    "ayahCount": 8,
+    "juzNumber": 30,
+    "nameArabic": "الزلزلة",
+    "nameEnglish": "Az-Zalzala",
+    "nameTransaction": "The Earthquake",
+    "number": 99,
+    "pageNumber": 599
+  },
+  {
+    "ayahCount": 11,
+    "juzNumber": 30,
+    "nameArabic": "العاديات",
+    "nameEnglish": "Al-'Adiyat",
+    "nameTransaction": "The Chargers",
+    "number": 100,
+    "pageNumber": 599
+  },
+  {
+    "ayahCount": 11,
+    "juzNumber": 30,
+    "nameArabic": "القارعة",
+    "nameEnglish": "Al-Qari'a",
+    "nameTransaction": "The Calamity",
+    "number": 101,
+    "pageNumber": 600
+  },
+  {
+    "ayahCount": 8,
+    "juzNumber": 30,
+    "nameArabic": "التكاثر",
+    "nameEnglish": "At-Takathur",
+    "nameTransaction": "The Rivalry In World Increase",
+    "number": 102,
+    "pageNumber": 600
+  },
+  {
+    "ayahCount": 3,
+    "juzNumber": 30,
+    "nameArabic": "العصر",
+    "nameEnglish": "Al-'Asr",
+    "nameTransaction": "The Declining Day",
+    "number": 103,
+    "pageNumber": 601
+  },
+  {
+    "ayahCount": 9,
+    "juzNumber": 30,
+    "nameArabic": "الهمزة",
+    "nameEnglish": "Al-Humaza",
+    "nameTransaction": "The Traducer",
+    "number": 104,
+    "pageNumber": 601
+  },
+  {
+    "ayahCount": 5,
+    "juzNumber": 30,
+    "nameArabic": "الفيل",
+    "nameEnglish": "Al-Fil",
+    "nameTransaction": "The Elephant",
+    "number": 105,
+    "pageNumber": 601
+  },
+  {
+    "ayahCount": 4,
+    "juzNumber": 30,
+    "nameArabic": "قريش",
+    "nameEnglish": "Quraysh",
+    "nameTransaction": "Quraysh",
+    "number": 106,
+    "pageNumber": 602
+  },
+  {
+    "ayahCount": 7,
+    "juzNumber": 30,
+    "nameArabic": "الماعون",
+    "nameEnglish": "Al-Ma'un",
+    "nameTransaction": "The Small Kindness",
+    "number": 107,
+    "pageNumber": 602
+  },
+  {
+    "ayahCount": 3,
+    "juzNumber": 30,
+    "nameArabic": "الكوثر",
+    "nameEnglish": "Al-Kawthar",
+    "nameTransaction": "Abundance",
+    "number": 108,
+    "pageNumber": 602
+  },
+  {
+    "ayahCount": 6,
+    "juzNumber": 30,
+    "nameArabic": "الكافرون",
+    "nameEnglish": "Al-Kafirun",
+    "nameTransaction": "The Disbelievers",
+    "number": 109,
+    "pageNumber": 603
+  },
+  {
+    "ayahCount": 3,
+    "juzNumber": 30,
+    "nameArabic": "النصر",
+    "nameEnglish": "An-Nasr",
+    "nameTransaction": "Divine Support",
+    "number": 110,
+    "pageNumber": 603
+  },
+  {
+    "ayahCount": 5,
+    "juzNumber": 30,
+    "nameArabic": "المسد",
+    "nameEnglish": "Al-Masad",
+    "nameTransaction": "The Palm Fibre",
+    "number": 111,
+    "pageNumber": 603
+  },
+  {
+    "ayahCount": 4,
+    "juzNumber": 30,
+    "nameArabic": "الإخلاص",
+    "nameEnglish": "Al-Ikhlas",
+    "nameTransaction": "Sincerity",
+    "number": 112,
+    "pageNumber": 604
+  },
+  {
+    "ayahCount": 5,
+    "juzNumber": 30,
+    "nameArabic": "الفلق",
+    "nameEnglish": "Al-Falaq",
+    "nameTransaction": "The Dawn",
+    "number": 113,
+    "pageNumber": 604
+  },
+  {
+    "ayahCount": 6,
+    "juzNumber": 30,
+    "nameArabic": "الناس",
+    "nameEnglish": "An-Nas",
+    "nameTransaction": "Mankind",
+    "number": 114,
+    "pageNumber": 604
+  }
+]

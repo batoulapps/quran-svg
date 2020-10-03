@@ -2,7 +2,7 @@ import json
 from math import ceil
 from multiprocessing import Pool
 from optparse import Values
-from xml.dom import minidom, NotFoundErr
+from xml.dom import minidom, NotFoundErr, Node
 from os import walk, path
 from scour import scour
 from svgelements import Path
@@ -10,22 +10,19 @@ from decimal import Decimal
 
 svg_dir = path.join(path.dirname(path.realpath(__file__)), "svg")
 output_dir = path.join(path.dirname(path.realpath(__file__)), "output")
-
-
-def is_content_node(node):
-    if node.firstChild is None:
-        return False
-    if node.firstChild.tagName != "path":
-        return False
-    if node.firstChild.hasAttribute(
-        "style"
-    ) and "fill:#ffffff" in node.firstChild.getAttribute("style"):
-        return False
-    return True
+surahs = []
 
 
 def is_path(node):
-    return node.tagName == "path" and node.hasAttribute("d")
+    return (
+        node.nodeType == Node.ELEMENT_NODE
+        and node.tagName == "path"
+        and node.hasAttribute("d")
+    )
+
+
+def is_group(node):
+    return node.nodeType == Node.ELEMENT_NODE and node.tagName == "g"
 
 
 def remove_tags(tag_names, doc):
@@ -47,8 +44,7 @@ def move_node(node, new_parent):
     new_parent.appendChild(moving_node)
 
 
-def adjust_root_transform(node, filename):
-    page_number = int(filename.replace(".svg", ""))
+def adjust_root_transform(node, page_number):
     horizontal_offset = "-115" if page_number % 2 == 0 else "-55"
     node.setAttribute(
         "transform", f"matrix(1.3333333,0,0,-1.3333333,{horizontal_offset},640)"
@@ -61,7 +57,7 @@ def set_viewbox(node, width, height):
     node.setAttribute("viewBox", f"0 0 {width} {height}")
 
 
-def optimize_opening_page(doc, filename):
+def optimize_opening_page(doc, _):
     set_viewbox(doc.firstChild, 235, 235)
 
     root_group = [x for x in doc.firstChild.childNodes if x.tagName == "g"][0]
@@ -81,12 +77,14 @@ def optimize_opening_page(doc, filename):
     # remove nested surah title
     remove_nodes([content_group.firstChild.firstChild.lastChild])
 
+    return None
 
-def optimize_standard_page(doc, filename):
+
+def optimize_standard_page(doc, page_number):
     set_viewbox(doc.firstChild, 345, 550)
 
     root_group = [x for x in doc.firstChild.childNodes if x.tagName == "g"][0]
-    adjust_root_transform(root_group, filename)
+    adjust_root_transform(root_group, page_number)
 
     root_children = root_group.childNodes
 
@@ -95,9 +93,46 @@ def optimize_standard_page(doc, filename):
     ayah_marker_group = root_children[2]
     ayah_marker_group.setAttribute("id", "ayah_markers")
 
+    content_children = content_group.childNodes
+    decorative_nodes = root_children[0:2] + root_children[3:-1] + content_children[0:-1]
+
+    # figure out surah header position
+    page_surahs = [x for x in surahs if x["pageNumber"] == page_number]
+    if len(page_surahs) > 0:
+        found = get_surah_header_positions(decorative_nodes)
+
+        if len(found) != len(page_surahs):
+            raise Exception("surah header count mismatch")
+
+        found_sorted = sorted(found, key=lambda pair: pair[1])
+        for i in range(len(page_surahs)):
+            s = page_surahs[i]
+            f = found_sorted[i]
+            s["headerPosition"] = {
+                "x": float(round(f[0], 4)),
+                "y": float(round(f[1], 4)),
+            }
+
     # remove decorations
-    decorative_nodes = root_children[0:2] + root_children[3:-1]
     remove_nodes(decorative_nodes)
+
+    return page_surahs
+
+
+def get_surah_header_positions(nodes):
+    found = []
+    for node in nodes:
+        if is_group(node):
+            found.extend(get_surah_header_positions(node.childNodes))
+        if is_path(node):
+            path_definition = node.getAttribute("d")
+            xmin, ymin, xmax, ymax = Path(path_definition).bbox()
+            width, height = xmax - xmin, ymax - ymin
+            if round(width) in range(245, 250) and round(height) in range(25, 30):
+                x, y = get_offset(node.parentNode)
+                found.append((x, y))
+
+    return found
 
 
 def set_ayah_numbers(doc):
@@ -127,10 +162,10 @@ def ayah_sort_key(ayah_node):
 def get_offset(node, x=0, y=0):
     if node.firstChild is not None and is_path(node.firstChild):
         path_definition = node.firstChild.getAttribute("d")
-        bounding_box = Path(path_definition).bbox()
+        xmin, ymin, xmax, ymax = Path(path_definition).bbox()
         # use path's bounding box to get the center of the ayah marker
-        x += Decimal(bounding_box[0] + ((bounding_box[2] - bounding_box[0]) / 2))
-        y += Decimal(bounding_box[1] + ((bounding_box[3] - bounding_box[1]) / 2))
+        x += Decimal(xmin + ((xmax - xmin) / 2))
+        y += Decimal(ymin + ((ymax - ymin) / 2))
 
     try:
         transform = scour.svg_transform_parser.parse(node.getAttribute("transform"))
@@ -195,12 +230,14 @@ def process_file(filename):
     print(f"Opening {filename}")
 
     filepath = path.join(svg_dir, filename)
+    page_number = int(path.splitext(filename)[0])
+
     doc = minidom.parse(filepath)
 
     if filename in ["001.svg", "002.svg"]:
-        optimize_opening_page(doc, filename)
+        out = optimize_opening_page(doc, page_number)
     else:
-        optimize_standard_page(doc, filename)
+        out = optimize_standard_page(doc, page_number)
 
     doc.firstChild.setAttribute("xmlns:ayah", "https://quranapp.com")
 
@@ -224,16 +261,28 @@ def process_file(filename):
         file.write(out_string)
         print(f"Processed {filename}")
 
+    return out
+
 
 def main():
-    files = list()
+    with open("surah.json") as fp:
+        surahs.extend(json.load(fp))
 
-    for (dirpath, dirnames, filenames) in walk(svg_dir):
+    files = []
+
+    for (_, _, filenames) in walk(svg_dir):
         svg_files = [file for file in filenames if file[-4:] == ".svg"]
         files.extend(svg_files)
 
     with Pool() as p:
-        p.map(process_file, files)
+        updated_surahs = p.map(process_file, files)
+
+    for page_surahs in [x for x in updated_surahs if x is not None]:
+        for surah in page_surahs:
+            surahs[surah["number"]-1] = surah
+
+    with open(path.join(output_dir, "surah.json"), "w") as fp:
+        json.dump(surahs, fp, indent=4, sort_keys=True)
 
 
 if __name__ == "__main__":
