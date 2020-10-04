@@ -282,7 +282,7 @@ def main():
             surahs[surah["number"]-1] = surah
 
     with open(path.join(output_dir, "surah.json"), "w") as fp:
-        json.dump(surahs, fp, indent=4, sort_keys=True)
+        json.dump(surahs, fp, ensure_ascii=False, indent=4, sort_keys=True)
 
 
 if __name__ == "__main__":
