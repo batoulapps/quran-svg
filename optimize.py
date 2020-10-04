@@ -1,4 +1,7 @@
 import json
+from functools import partial
+from itertools import product
+
 from math import ceil
 from multiprocessing import Pool
 from optparse import Values
@@ -10,7 +13,6 @@ from decimal import Decimal
 
 svg_dir = path.join(path.dirname(path.realpath(__file__)), "svg")
 output_dir = path.join(path.dirname(path.realpath(__file__)), "output")
-surahs = []
 
 
 def is_path(node):
@@ -57,7 +59,7 @@ def set_viewbox(node, width, height):
     node.setAttribute("viewBox", f"0 0 {width} {height}")
 
 
-def optimize_opening_page(doc, _):
+def optimize_opening_page(doc):
     set_viewbox(doc.firstChild, 235, 235)
 
     root_group = [x for x in doc.firstChild.childNodes if x.tagName == "g"][0]
@@ -77,10 +79,8 @@ def optimize_opening_page(doc, _):
     # remove nested surah title
     remove_nodes([content_group.firstChild.firstChild.lastChild])
 
-    return None
 
-
-def optimize_standard_page(doc, page_number):
+def optimize_standard_page(doc, page_number, surahs):
     set_viewbox(doc.firstChild, 345, 550)
 
     root_group = [x for x in doc.firstChild.childNodes if x.tagName == "g"][0]
@@ -226,7 +226,7 @@ def scour_xml(doc):
     return doc
 
 
-def process_file(filename):
+def process_file(filename, surahs):
     print(f"Opening {filename}")
 
     filepath = path.join(svg_dir, filename)
@@ -235,9 +235,10 @@ def process_file(filename):
     doc = minidom.parse(filepath)
 
     if filename in ["001.svg", "002.svg"]:
-        out = optimize_opening_page(doc, page_number)
+        optimize_opening_page(doc)
+        out = None
     else:
-        out = optimize_standard_page(doc, page_number)
+        out = optimize_standard_page(doc, page_number, surahs)
 
     doc.firstChild.setAttribute("xmlns:ayah", "https://quranapp.com")
 
@@ -265,17 +266,17 @@ def process_file(filename):
 
 
 def main():
-    with open("surah.json") as fp:
-        surahs.extend(json.load(fp))
+    surahs_file = path.join(path.dirname(path.realpath(__file__)), "surah.json")
+    with open(surahs_file) as fp:
+        surahs = json.load(fp)
 
     files = []
-
     for (_, _, filenames) in walk(svg_dir):
         svg_files = [file for file in filenames if file[-4:] == ".svg"]
         files.extend(svg_files)
 
     with Pool() as p:
-        updated_surahs = p.map(process_file, files)
+        updated_surahs = p.map(partial(process_file, surahs=surahs), files)
 
     for page_surahs in [x for x in updated_surahs if x is not None]:
         for surah in page_surahs:
