@@ -108,10 +108,7 @@ def optimize_standard_page(doc, page_number, surahs):
         for i in range(len(page_surahs)):
             s = page_surahs[i]
             f = found_sorted[i]
-            s["headerPosition"] = {
-                "x": float(round(f[0], 4)),
-                "y": float(round(f[1], 4)),
-            }
+            s["headerPosition"] = float(round(f[1], 2))
 
     # remove decorations
     remove_nodes(decorative_nodes)
@@ -145,8 +142,8 @@ def set_ayah_numbers(doc):
         # print ayah offset
         x, y = get_offset(node)
 
-        node.setAttribute("ayah:x", str(round(x, 4)))
-        node.setAttribute("ayah:y", str(round(y, 4)))
+        node.setAttribute("ayah:x", str(round(x, 2)))
+        node.setAttribute("ayah:y", str(round(y, 2)))
 
 
 def ayah_sort_key(ayah_node):
