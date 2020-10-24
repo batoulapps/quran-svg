@@ -269,7 +269,7 @@ def process_file(filename, surahs):
     return out
 
 
-def main():
+def optimize_svgs():
     surahs_file = path.join(path.dirname(path.realpath(__file__)), "surah.json")
     with open(surahs_file) as fp:
         surahs = json.load(fp)
@@ -291,4 +291,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    optimize_svgs()

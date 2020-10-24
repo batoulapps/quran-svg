@@ -3,7 +3,7 @@ from os import path, walk
 from xml.dom import minidom, NotFoundErr, Node
 
 
-def main():
+def generate_positions():
     files = list()
 
     output_dir = path.join(path.dirname(path.realpath(__file__)), "output")
@@ -57,4 +57,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    generate_positions()
