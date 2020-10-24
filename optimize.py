@@ -110,8 +110,15 @@ def optimize_standard_page(doc, page_number, surahs):
             f = found_sorted[i]
             s["headerPosition"] = float(round(f[1], 2))
 
+    # remove missed white background elements
+    bad_paths = [
+        x
+        for x in root_group.getElementsByTagName("path")
+        if "fill:#ffffff" in x.getAttribute("style")
+    ]
+
     # remove decorations
-    remove_nodes(decorative_nodes)
+    remove_nodes(decorative_nodes + bad_paths)
 
     return page_surahs
 
@@ -277,7 +284,7 @@ def main():
 
     for page_surahs in [x for x in updated_surahs if x is not None]:
         for surah in page_surahs:
-            surahs[surah["number"]-1] = surah
+            surahs[surah["number"] - 1] = surah
 
     with open(path.join(output_dir, "surah.json"), "w") as fp:
         json.dump(surahs, fp, ensure_ascii=False, indent=4, sort_keys=True)
