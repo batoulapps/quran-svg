@@ -1,2 +1,6 @@
+numpy==1.19.4
 scour==0.38.1.post1
+six==1.15.0
 svgelements==1.2.0
+svgpathtools==1.4.1
+svgwrite==1.4
