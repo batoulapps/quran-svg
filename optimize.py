@@ -141,26 +141,14 @@ def get_surah_header_positions(nodes):
 
 def set_ayah_numbers(doc):
     ayah_marker_group = doc.getElementById("ayah_markers")
-
     ayah_markers = ayah_marker_group.childNodes
-    ayah_marker_group.childNodes = sorted(ayah_markers, key=ayah_sort_key)
 
-    for node in ayah_marker_group.childNodes:
+    for node in ayah_markers:
         # print ayah offset
         x, y = get_offset(node)
 
         node.setAttribute("ayah:x", str(round(x, 2)))
         node.setAttribute("ayah:y", str(round(y, 2)))
-
-
-def ayah_sort_key(ayah_node):
-    transform = scour.svg_transform_parser.parse(ayah_node.getAttribute("transform"))
-    try:
-        [(_, [x, y])] = transform
-    except ValueError as e:
-        print(transform)
-        raise e
-    return [-round_up(y, 10), -x]
 
 
 def get_offset(node, x=0, y=0):
@@ -190,10 +178,6 @@ def get_offset(node, x=0, y=0):
         return get_offset(node.parentNode, x, y)
 
     return x, y
-
-
-def round_up(num, divisor):
-    return ceil(num / divisor) * divisor
 
 
 def scour_xml(doc):

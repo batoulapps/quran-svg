@@ -4,14 +4,12 @@ from os import path, walk
 from xml.dom import minidom, NotFoundErr, Node
 
 
-def round_up(num, divisor):
-    return ceil(num / divisor) * divisor
-
-
-def node_sort_key(node):
+def node_sort_key(node, page_height, lines, offset):
     x = float(node.getAttribute("ayah:x"))
     y = float(node.getAttribute("ayah:y"))
-    return [round_up(y, 10), -x]
+    line_ratio = (page_height - (offset * 2)) / lines
+    line_number = ceil((y - offset) / line_ratio)
+    return [line_number, -x]
 
 
 def generate_positions():
@@ -46,10 +44,14 @@ def generate_positions():
 
         items = []
 
+        page_height = float(doc.getElementsByTagName("svg")[0].getAttribute("viewBox").split()[3])
+        lines = 15 if page_number > 2 else 7
+        offset = 6 if page_number > 2 else 20
+
         # find ayah markers
         nodes = doc.getElementById("ayah_markers").childNodes
         nodes = [x for x in nodes if x.nodeType == Node.ELEMENT_NODE]
-        nodes = sorted(nodes, key=node_sort_key)
+        nodes = sorted(nodes, key=lambda sort_node: node_sort_key(sort_node, page_height, lines, offset))
         for node in nodes:
             ayah_number += 1
             ayah_index += 1
